@@ -1,6 +1,7 @@
 "use client";
 
 import {useEffect,useRef,useState} from "react";
+import {SiteImage} from "../lib/site-paths";
 import {ArrowRight} from "lucide-react";
 import {advanceBookClock,BOOK_END,BOOK_HOLD,TURN_DURATION,coverFrame,turnProgress,type BookClock} from "../lib/book-motion";
 
@@ -58,7 +59,7 @@ export default function BookIntro({schoolName,title,onComplete}:{schoolName:stri
  return <div ref={root} className="book-intro" data-ready={ready} role="dialog" aria-modal="true" aria-labelledby="book-intro-title">
   <div ref={cover} className="book-cover" aria-hidden="true">
    <div className="book-cover-face">
-    <img className="book-cover-art" src="/images/sarang-book-cover.webp" alt="" fetchPriority="high" width="1086" height="1448"/>
+    <SiteImage className="book-cover-art" src="/images/sarang-book-cover.webp" alt="" fetchPriority="high" width="1086" height="1448"/>
     <div className="book-cover-shade"/>
     <div ref={printing} className="book-cover-printing">
      <div className="book-cover-content">
