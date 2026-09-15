@@ -1,0 +1,2 @@
+import { env } from "cloudflare:workers"; import { COOKIE_NAME,makeAdminToken } from "../../../../lib/admin-auth";
+export async function POST(request:Request){const {password}=await request.json() as {password?:string};if(!env.ADMIN_PASSWORD||password!==env.ADMIN_PASSWORD)return Response.json({error:"invalid password"},{status:401});const token=await makeAdminToken();return Response.json({ok:true},{headers:{"Set-Cookie":`${COOKIE_NAME}=${token}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=86400`}})}
