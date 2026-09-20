@@ -3,10 +3,17 @@ import react from '@vitejs/plugin-react';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {readFile,writeFile,mkdir,rm} from 'node:fs/promises';
-const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),base='/MontrealSarangKoreanSchool/',origin='https://yeenkim-elly.github.io',out=resolve(root,'docs');
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),out=resolve(root,'docs');
+// Keep the configured custom domain when rebuilding the output directory.
+let domain='';
+try{domain=(await readFile(resolve(out,'CNAME'),'utf8')).trim()}catch(error){if(error.code!=='ENOENT')throw error}
+if(domain&&!/^[a-z0-9.-]+$/i.test(domain))throw new Error('Invalid CNAME');
+const base=domain?'/':'/MontrealSarangKoreanSchool/';
+const origin=domain?'https://'+domain:'https://yeenkim-elly.github.io';
 const common={configFile:false,root,base,plugins:[react()],resolve:{alias:{'@':root}}};
 await build({...common,publicDir:false,build:{ssr:resolve(root,'static/render.tsx'),outDir:resolve(root,'.static-render'),emptyOutDir:true}});
 await build({...common,build:{outDir:out,emptyOutDir:true,rollupOptions:{input:resolve(root,'static/index.html')}}});
+if(domain)await writeFile(resolve(out,'CNAME'),domain+'\n');
 const {render,data}=await import('../.static-render/render.js');
 const template=await readFile(resolve(out,'static/index.html'),'utf8');
 const routes=[['','home','몬트리올 사랑한글학교'],['about','about','학교 소개'],['teachers','teachers','교장·교감 및 선생님'],['schedule','schedule','수업·학기 안내'],['classes','classes','한글 수업'],['programs','programs','방과후 수업'],...data.classes.map(c=>['classes/'+c.id,'class-detail',c.name+' · '+c.focus,c.id])];
