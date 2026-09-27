@@ -1,3 +1,10 @@
 {
-  "photos": []
+  "photos": [
+    {
+      "id": "140752ed-4996-45dd-bf06-98a2a48faf85",
+      "src": "/images/gallery/202609201044290.jpg",
+      "alt": "202609",
+      "caption": "민속놀이를 같이 즐기는 한글학교"
+    }
+  ]
 }
