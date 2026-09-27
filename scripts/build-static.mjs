@@ -16,7 +16,7 @@ await build({...common,build:{outDir:out,emptyOutDir:true,rollupOptions:{input:r
 if(domain)await writeFile(resolve(out,'CNAME'),domain+'\n');
 const {render,data}=await import('../.static-render/render.js');
 const template=await readFile(resolve(out,'static/index.html'),'utf8');
-const routes=[['','home','몬트리올 사랑한글학교'],['about','about','학교 소개'],['teachers','teachers','교장·교감 및 선생님'],['schedule','schedule','수업·학기 안내'],['classes','classes','한글 수업'],['programs','programs','방과후 수업'],...data.classes.map(c=>['classes/'+c.id,'class-detail',c.name+' · '+c.focus,c.id])];
+const routes=[['','home','몬트리올 사랑한글학교'],['about','about','학교 소개'],['teachers','teachers','교장·교감 및 선생님'],['gallery','gallery','학교 사진첩'],['schedule','schedule','수업·학기 안내'],['classes','classes','한글 수업'],['programs','programs','방과후 수업'],...data.classes.map(c=>['classes/'+c.id,'class-detail',c.name+' · '+c.focus,c.id])];
 const escape=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
 for(const [path,page,title,classId] of routes){
  const props={initialContent:data,page,classId,staticMode:true,basePath:base},url=origin+base+(path?path+'/':'');

@@ -1,0 +1,40 @@
+media:
+  - name: gallery
+    label: 학교 사진첩
+    input: public/images/gallery
+    output: /images/gallery
+    rename: safe
+    extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: gallery
+    label: 학교 사진첩
+    type: file
+    path: static/gallery.json
+    fields:
+      - name: photos
+        label: 사진
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{caption}"
+        fields:
+          - name: id
+            label: 사진 ID
+            type: uuid
+          - name: src
+            label: 이미지
+            type: image
+            required: true
+            options:
+              media: gallery
+          - name: alt
+            label: 이미지 설명
+            type: string
+            required: true
+            description: 사진을 보지 못하는 방문자에게 전달할 장면 설명입니다. 아이들의 실명은 적지 마세요.
+          - name: caption
+            label: 화면에 표시할 문구
+            type: string
+            description: "예: 한글 낱말 카드로 함께 공부하는 0반"
