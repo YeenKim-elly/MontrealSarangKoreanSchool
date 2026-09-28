@@ -1,12 +1,6 @@
 {
   "photos": [
     {
-      "id": "6a07944b-219b-4172-92b2-b01fd8f82af7",
-      "src": "/images/gallery/TraditionalGames/traditional-games-01.webp",
-      "alt": "야외 활동에서 어린 학생을 도와주는 학생",
-      "caption": "전통놀이 체험 활동"
-    },
-    {
       "id": "3aad76a1-77cf-48a9-ad99-5087fbd5dc0b",
       "src": "/images/gallery/TraditionalGames/traditional-games-06.webp",
       "alt": "교실에서 함께 웃으며 사진을 찍는 학생들",
@@ -59,6 +53,12 @@
       "src": "/images/gallery/TraditionalGames/traditional-games-16.webp",
       "alt": "공원에서 놀이 순서를 기다리는 학생들",
       "caption": "친구들과 차례를 지키며 함께하기"
+    },
+    {
+      "id": "6a07944b-219b-4172-92b2-b01fd8f82af7",
+      "src": "/images/gallery/TraditionalGames/traditional-games-01.webp",
+      "alt": "야외 활동에서 어린 학생을 도와주는 학생",
+      "caption": "전통놀이 체험 활동"
     },
     {
       "id": "8e63debc-9b6d-4cce-b629-75e545055ca5",
